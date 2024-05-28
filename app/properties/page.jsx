@@ -1,5 +1,5 @@
 const PropertyPage = () => {
-  return <div>Add Property Page</div>;
+  return <div>PropertyPage</div>;
 };
 
 export default PropertyPage;
