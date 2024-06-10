@@ -33,7 +33,7 @@ const PropertyAddForm = () => {
     const { name, value } = e.target;
     //check if nested property
     if (name.includes(".")) {
-      const [outerKey, innerKey] = name.split(".");
+      const [outerKey, innerKey] = name.split("."); //outerkey = location, innerkey = street
       setFields((prevFields) => ({
         ...prevFields,
         [outerKey]: {
@@ -71,7 +71,22 @@ const PropertyAddForm = () => {
       amenities: updatedAmenities,
     }));
   };
-  const handleImageChange = () => {};
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+    //clone images array
+    const updatedImages = [...fields.images];
+
+    //add new files to array
+    for (const file of files) {
+      updatedImages.push(file);
+    }
+
+    //update state with array of images
+    setFields((prevFields) => ({
+      ...prevFields,
+      images: updatedImages,
+    }));
+  };
 
   return (
     <form>
