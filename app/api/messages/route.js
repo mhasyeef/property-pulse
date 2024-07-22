@@ -20,8 +20,8 @@ export const GET = async () => {
     const { userId } = sessionUser;
 
     const messages = await Message.find({ recipient: userId })
-      .populate("sender", "name")
-      .populate("property", "title");
+      .populate("sender", "username") //username is from the users collection
+      .populate("property", "name"); //name is from the properties collection
     return new Response(JSON.stringify(messages), { status: 200 });
   } catch (error) {
     console.log(error);
